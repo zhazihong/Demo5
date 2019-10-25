@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            console.log(generate(7, 5)); // 15
+        }
+
+        function generate(row, column){
+            if( column == 1 || row == column ) {
+                return 1;
+            } else {
+                return generate(row-1, column-1) + generate(row-1, column);
+            }
+        }
+
+        // 大数相加
+        function bigNumAdd(big1, big2) {
+            big1 += "";
+            big2 += "";
+            var maxLen = Math.max(big1.length, big2.length),
+                bAry = big1.split("").reverse(),
+                cAry = big2.split("").reverse(),
+                overflow = 0,
+                resAry = [],
+                fn,
+                sn,
+                sum;
+            for (var i = 0; i <= maxLen; i++) {
+                fn = parseInt(bAry[i] || 0);
+                sn = parseInt(cAry[i] || 0);
+                sum = fn + sn + overflow;
+                overflow = (sum - sum % 10) / 10;
+                resAry.unshift(sum % 10);
+            }
+            if (resAry[0] == 0) {
+                resAry.splice(0, 1);
+            }
+            return resAry.join("");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
