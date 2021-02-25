@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c37b962-699b-4c63-b230-4bad88934105" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reverseInteger.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/twoSum.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/palindromeNumber.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/romanToInteger.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addTwoNumbers.html" beforeDir="false" afterPath="$PROJECT_DIR$/addTwoNumbers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solution.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reverseInteger.html" beforeDir="false" afterPath="$PROJECT_DIR$/reverseInteger.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,11 @@
       <workItem from="1609898613213" duration="4737000" />
       <workItem from="1609927592072" duration="123000" />
       <workItem from="1610090302552" duration="64000" />
-      <workItem from="1613718120841" duration="8162000" />
+      <workItem from="1613718120841" duration="8653000" />
+      <workItem from="1613784987117" duration="1200000" />
+      <workItem from="1613957500459" duration="4741000" />
+      <workItem from="1614044671737" duration="151000" />
+      <workItem from="1614233683241" duration="1336000" />
     </task>
     <servers />
   </component>
@@ -79,17 +86,25 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613718150307">
+    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614233850121">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613718150307" />
+    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614233850121" />
     <state x="723" y="201" key="#reverseInteger.html" timestamp="1613725208486">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="723" y="201" key="#reverseInteger.html/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613725208486" />
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613722026261">
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1613983627834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613722026261" />
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613983627834" />
+    <state x="805" y="221" key="RollbackChangesDialog" timestamp="1613983629196">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="805" y="221" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613983629196" />
+    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614234215470">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614234215470" />
   </component>
 </project>
