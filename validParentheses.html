@@ -32,14 +32,30 @@
              */
 
             let s = '()()';
-            // 1. 直接使用string的方法
-            console.log(isValid(s));
-            // TODO 2. 使用辅助栈法实现
-
+            // 1.直接使用string的方法 运行时间:292 ms 消耗内存:43 MB
+            // console.log(isValid(s));
+            // 2.使用辅助栈法实现     运行时间:80 ms 消耗内存:39.6 MB
+            console.log(isValidByStack(s));
         }
 
         function isValidByStack(s) {
-
+            if (s.length % 2) {
+                return false;
+            }
+            let stack = [];
+            for (let code of s) {
+                if(stack.length) {
+                    let lastCode = stack[stack.length - 1];
+                    if (lastCode == '(' && code == ')' || lastCode == '[' && code == ']' || lastCode == '{' && code == '}') {
+                        stack.pop();
+                    } else {
+                        stack.push(code);
+                    }
+                } else {
+                    stack.push(code);
+                }
+            }
+            return !stack.length;
         }
 
         function isValid(s) {

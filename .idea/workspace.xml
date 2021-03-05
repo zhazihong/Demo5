@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c37b962-699b-4c63-b230-4bad88934105" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/validParentheses.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validParentheses.html" beforeDir="false" afterPath="$PROJECT_DIR$/validParentheses.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,9 @@
       <workItem from="1614925335352" duration="67000" />
       <workItem from="1614925425620" duration="5000" />
       <workItem from="1614925473201" duration="26000" />
-      <workItem from="1614925650090" duration="3707000" />
+      <workItem from="1614925650090" duration="4245000" />
+      <workItem from="1614932152818" duration="90000" />
+      <workItem from="1614936895572" duration="1475000" />
     </task>
     <servers />
   </component>
@@ -110,9 +111,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="805" y="221" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613983629196" />
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614234215470">
+    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614938281992">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614234215470" />
+    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614938281992" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1614936984138">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614936984138" />
   </component>
 </project>
