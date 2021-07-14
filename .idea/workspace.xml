@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c37b962-699b-4c63-b230-4bad88934105" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/reverseList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validParentheses.html" beforeDir="false" afterPath="$PROJECT_DIR$/validParentheses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +14,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -22,6 +24,7 @@
   </component>
   <component name="ProjectId" id="1ogpWMgkh8TglICVyr8PTFPFYNC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -32,13 +35,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProject\1\Demo5\js" />
       <recent name="D:\MyProject\1\Demo5" />
+      <recent name="D:\MyProject\1\Demo5\echarts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProject\1\Demo5\echarts" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.reverseInteger.html">
@@ -54,6 +63,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -79,45 +89,18 @@
       <workItem from="1614925473201" duration="26000" />
       <workItem from="1614925650090" duration="4245000" />
       <workItem from="1614932152818" duration="90000" />
-      <workItem from="1614936895572" duration="1475000" />
+      <workItem from="1614936895572" duration="2109000" />
+      <workItem from="1615168094287" duration="56000" />
+      <workItem from="1615553389112" duration="644000" />
+      <workItem from="1615773054405" duration="86000" />
+      <workItem from="1616058426452" duration="365000" />
+      <workItem from="1617085576547" duration="447000" />
+      <workItem from="1624240853521" duration="10614000" />
+      <workItem from="1626247426198" duration="4069000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614233850121">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="687" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614233850121" />
-    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614924912344">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614924912344" />
-    <state x="723" y="201" key="#reverseInteger.html" timestamp="1613725208486">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="723" y="201" key="#reverseInteger.html/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613725208486" />
-    <state x="558" y="87" key="CommitChangelistDialog2" timestamp="1614235051239">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="558" y="87" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614235051239" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1613983627834">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613983627834" />
-    <state x="805" y="221" key="RollbackChangesDialog" timestamp="1613983629196">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="805" y="221" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1613983629196" />
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614938281992">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="483" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614938281992" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1614936984138">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614936984138" />
+    <option name="version" value="3" />
   </component>
 </project>

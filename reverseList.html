@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NC78 反转链表</title>
+    <script type="text/javascript">
+        window.onload = function () {
+          const list = parseToList([1, 2, 3]);
+          console.log(reverseList(list));
+        }
+
+        /**
+         * 反转链表
+         * @param head
+         */
+        function reverseList(head) {
+          let next = null;
+          let pre = null;
+
+          while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+          }
+          return pre;
+        }
+
+        function ListNode(val) {
+          this.val = val;
+          this.next = null;
+        }
+
+        /**
+         * 数组转换成链表
+         * @param {Array} arr
+         * @return {ListNode}
+         */
+        function parseToList(arr) {
+            let list = new ListNode(null);
+            let head = list;
+            if (!arr.length) {
+                return head
+            }
+            for (let i = 0; i < arr.length; i++) {
+                list.val = arr[i];
+                if (arr.length - 1 === i) {
+                    list.next = null;
+                } else {
+                    list.next = new ListNode(arr[i + 1]);
+                    list = list.next;
+                }
+            }
+            return head;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
