@@ -5,46 +5,186 @@
     <title>LetCode题库算法练习</title>
     <script type="text/javascript">
         window.onload = function () {
-            console.log(generate(7, 5)); // 15
         };
 
-        function generate(row, column) {
-            if (column == 1 || row == column) {
-                return 1;
-            } else {
-                return generate(row - 1, column - 1) + generate(row - 1, column);
+        /**********************************************NC78 反转链表 reverseList*****************************************/
+        const list = parseToList([1, 2, 3]);
+        console.log('reverseList', reverseList(list));
+
+        /**
+         * 反转链表
+         * @param head
+         */
+        function reverseList(head) {
+            let next = null;
+            let pre = null;
+
+            while (head != null) {
+                next = head.next;
+                head.next = pre;
+                pre = head;
+                head = next;
+            }
+            return pre;
+        }
+
+        function ListNode(val) {
+            this.val = val;
+            this.next = null;
+        }
+
+        /**
+         * 数组转换成链表
+         * @param {Array} arr
+         * @return {ListNode}
+         */
+        function parseToList(arr) {
+            let list = new ListNode(null);
+            let head = list;
+            if (!arr.length) {
+                return head
+            }
+            for (let i = 0; i < arr.length; i++) {
+                list.val = arr[i];
+                if (arr.length - 1 === i) {
+                    list.next = null;
+                } else {
+                    list.next = new ListNode(arr[i + 1]);
+                    list = list.next;
+                }
+            }
+            return head;
+        }
+
+        /**********************************************NC93 设计LRU缓存结构 LRU*******************************************/
+        /**
+         * lru design
+         * @param *[] operators int整型二维数组 the ops
+         * @param int k int整型 the k
+         * @return *[] int整型一维数组
+         */
+        let arr = [[1, 1, 1], [1, 2, 2], [1, 3, 2], [2, 1], [1, 4, 4], [2, 2]];
+        let k = 3;
+        console.log('LRU', LRU(arr, k));
+
+        function LRU(operators = [], k = 0) {
+            // write code here
+            let map = new Map();
+            let result = [];
+            operators.forEach((item) => {
+                const [op, key, value] = item;
+                if (op === 1) { // set
+                    if (map.size >= k) {
+                        map.delete(map.keys().next().value);
+                    }
+                    map.set(key, value);
+                } else { // get
+                    const val = map.get(key);
+                    if (val === undefined) {
+                        result.push(-1);
+                    } else {
+                        result.push(val);
+                        map.delete(key);
+                        map.set(key, val);
+                    }
+                }
+            })
+            return result;
+        }
+
+        /**********************************************二进制中1的个数****************************************************/
+        console.log('numberOf1', numberOf1(13));
+
+        function numberOf1(n) {
+            // 没有考虑负数
+            // write code here
+            let count = 0;
+            while (n) {
+                count++;
+                n = n & (n - 1);
+            }
+            return count;
+        }
+
+        /*function numberOf1(n) {
+            // 没有考虑负数
+            // write code here
+            let count = 0;
+            while (n !== 0){
+                let temp = n % 2;
+                if (temp === 1) {
+                    count++;
+                }
+                n = n / 2 | 0
+            }
+            return count;
+        }*/
+        /**********************************************NC61 两数之和*****************************************************/
+        /**
+         * 给出一个整数数组，请在数组中找出两个加起来等于目标值的数，
+         * @param numbers int整型一维数组
+         * @param target int整型
+         * @return number[] int整型一维数组
+         */
+        console.log('twoSum', twoSum([3, 2, 4], 6))
+
+        function twoSum(numbers, target) {
+            // write code here
+            let map = new Map();
+            for (let i = 0; i < numbers.length; i++) {
+                let res = target - numbers[i];
+                if (map.has(res)) {
+                    return [map.get(res), i + 1]
+                }
+                map.set(numbers[i], i + 1);
             }
         }
 
-        // 大数相加
-        function bigNumAdd(big1, big2) {
-            big1 += "";
-            big2 += "";
-            var maxLen = Math.max(big1.length, big2.length),
-                bAry = big1.split("").reverse(),
-                cAry = big2.split("").reverse(),
-                overflow = 0,
-                resAry = [],
-                fn,
-                sn,
-                sum;
-            for (var i = 0; i <= maxLen; i++) {
-                fn = parseInt(bAry[i] || 0);
-                sn = parseInt(cAry[i] || 0);
-                sum = fn + sn + overflow;
-                overflow = (sum - sum % 10) / 10;
-                resAry.unshift(sum % 10);
+        /*function twoSum( numbers ,  target ) {
+            // write code here
+            for(let i = 0; i < numbers.length - 1; i++){
+                for (let j = i+1; j < numbers.length; j++){
+                    if (numbers[i] + numbers[j] === target) {
+                        return [i+1, j+1];
+                    }
+                }
             }
-            if (resAry[0] == 0) {
-                resAry.splice(0, 1);
-            }
-            return resAry.join("");
+        }*/
+
+        /**********************************************NC45 实现二叉树先序，中序和后序遍历***********************************/
+
+        let node = new TreeNode(1);
+        node.left = 2;
+        node.right = 3;
+        console.log('threeOrders', threeOrders(node));
+        /**
+         * 二叉树先序，中序和后序遍历
+         * @param TreeNode root TreeNode类 the root of binary tree {1,2,3}
+         * @return Array int整型二维数组 [[1,2,3],[2,1,3],[2,3,1]]
+         * 先序：根左右
+         * 中序：左根右
+         * 后序：左右根
+         *
+         */
+        function threeOrders(root) {
+            // write code here
+            const leftArr = [root.val, root.left, root.right];
+            const middleArr = [root.left, root.val, root.right];
+            const rightArr = [root.left, root.right, root.val];
+            return [leftArr, middleArr, rightArr];
         }
+
+        function TreeNode(x) {
+          this.val = x;
+          this.left = null;
+          this.right = null;
+        }
+
     </script>
 </head>
 <body>
 <div style="flex:1; display: flex; flex-direction: row;">
-    <div style="background-color: aliceblue; width: 20%; height: 100%;">
+    <div>
         <ul>
             <li><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank">1 两数之和</a></li>
             <li><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank">2 两数相加</a></li>
@@ -59,6 +199,15 @@
             <li>
                 <a href="https://www.nowcoder.com/practice/e3769a5f49894d49b871c09cadd13a61?tpId=117&&tqId=37804&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
                    target="_blank">NC93 设计LRU缓存结构 LRU</a></li>
+            <li>
+                <a href="https://www.nowcoder.com/practice/8ee967e43c2c4ec193b040ea7fbb10b8?tpId=117&&tqId=37771&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
+                   target="_blank">NC120 二进制中1的个数</a></li>
+            <li>
+                <a href="https://www.nowcoder.com/practice/20ef0972485e41019e39543e8e895b7f?tpId=117&&tqId=37756&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
+                   target="_blank">NC61 两数之和</a></li>
+            <li>
+                <a href="https://www.nowcoder.com/practice/a9fec6c46a684ad5a3abd4e365a9d362?tpId=117&&tqId=37819&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
+                   target="_blank">NC45 实现二叉树先序，中序和后序遍历</a></li>
         </ul>
     </div>
     <div>
