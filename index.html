@@ -154,8 +154,8 @@
         /**********************************************NC45 实现二叉树先序，中序和后序遍历***********************************/
 
         let node = new TreeNode(1);
-        node.left = 2;
-        node.right = 3;
+        node.left = new TreeNode(2);
+        node.right = new TreeNode(3);
         console.log('threeOrders', threeOrders(node));
         /**
          * 二叉树先序，中序和后序遍历
@@ -168,10 +168,32 @@
          */
         function threeOrders(root) {
             // write code here
-            const leftArr = [root.val, root.left, root.right];
-            const middleArr = [root.left, root.val, root.right];
-            const rightArr = [root.left, root.right, root.val];
-            return [leftArr, middleArr, rightArr];
+            let preArray = [], middleArray = [], postArray = [];
+            function preOrder(root) {
+                if (root) {
+                    preArray.push(root.val);
+                    preOrder(root.left);
+                    preOrder(root.right);
+                }
+            }
+            function middleOrder(root) {
+                if (root) {
+                    middleOrder(root.left);
+                    middleArray.push(root.val);
+                    middleOrder(root.right);
+                }
+            }
+            function postOrder(root) {
+                if (root) {
+                    postOrder(root.left);
+                    postOrder(root.right);
+                    postArray.push(root.val);
+                }
+            }
+            preOrder(root);
+            middleOrder(root);
+            postOrder(root);
+            return [preArray, middleArray, postArray];
         }
 
         function TreeNode(x) {
