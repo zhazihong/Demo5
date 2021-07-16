@@ -152,7 +152,6 @@
         }*/
 
         /**********************************************NC45 实现二叉树先序，中序和后序遍历***********************************/
-
         let node = new TreeNode(1);
         node.left = new TreeNode(2);
         node.right = new TreeNode(3);
@@ -200,6 +199,38 @@
           this.val = x;
           this.left = null;
           this.right = null;
+        }
+
+        /**********************************************NC33 合并有序链表***********************************/
+
+        console.log('合并有序链表:mergeTwoLists', mergeTwoLists(parseToList([1,2]), parseToList([4,5])));
+
+        /**
+         * NC33 合并有序链表
+         * @param ListNode l1 ListNode类
+         * @param ListNode l2 ListNode类
+         * @return ListNode ListNode类
+         */
+        function mergeTwoLists( l1 ,  l2 ) {
+            // write code here
+            let temp = new ListNode();
+            let h = temp;
+            while (l1 && l2) {
+                if (l1.val < l2.val) {
+                    temp.next = l1;
+                    l1 = l1.next;
+                } else {
+                    temp.next = l2;
+                    l2 = l2.next;
+                }
+                temp = temp.next;
+            }
+            if (!l1) {
+                temp.next = l2;
+            } else if (!l2) {
+                temp.next = l1;
+            }
+            return h.next;
         }
 
     </script>

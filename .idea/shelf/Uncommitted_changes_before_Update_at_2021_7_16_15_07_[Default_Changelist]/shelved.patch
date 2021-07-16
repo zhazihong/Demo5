@@ -1,0 +1,432 @@
+Index: LRU.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>LRU</title>\r\n    <script type=\"text/javascript\">\r\n      window.onload = function () {\r\n        /**\r\n         * 描述\r\n         * 设计LRU缓存结构，该结构在构造时确定大小，假设大小为K，并有如下两个功能\r\n         * set(key, value)：将记录(key, value)插入该结构\r\n         * get(key)：返回key对应的value值\r\n         * [要求]\r\n         * set和get方法的时间复杂度为O(1)\r\n         * 某个key的set或get操作一旦发生，认为这个key的记录成了最常使用的。\r\n         * 当缓存的大小超过K时，移除最不经常使用的记录，即set或get最久远的。\r\n         * 若opt=1，接下来两个整数x, y，表示set(x, y)\r\n         * 若opt=2，接下来一个整数x，表示get(x)，若x未出现过或已被移除，则返回-1\r\n         * 对于每个操作2，输出一个答案\r\n         * 示例1\r\n         * 输入：\r\n         * [[1,1,1],[1,2,2],[1,3,2],[2,1],[1,4,4],[2,2]],3\r\n         * 复制\r\n         * 返回值：\r\n         * [1,-1]\r\n         * 复制\r\n         * 说明：\r\n         * 第一次操作后：最常使用的记录为(\"1\", 1)\r\n         * 第二次操作后：最常使用的记录为(\"2\", 2)，(\"1\", 1)变为最不常用的\r\n         * 第四次操作后：最常用的记录为(\"1\", 1)，(\"2\", 2)变为最不常用的\r\n         * 第五次操作后：大小超过了3，所以移除此时最不常使用的记录(\"2\", 2)，加入记录(\"4\", 4)，并且为最常使用的记录，然后(\"3\", 2)变为最不常使用的记录\r\n         *\r\n         * 备注：\r\n         * 1≤K≤N≤10^5\r\n         * −2×10^9≤x,y≤2×10^9\r\n         */\r\n        let arr = [[1,1,1],[1,2,2],[1,3,2],[2,1],[1,4,4],[2,2]];\r\n        let k = 3;\r\n        console.log('LRU', LRU(arr, k));\r\n      }\r\n\r\n      /**\r\n       * lru design\r\n       * @param *[] operators int整型二维数组 the ops\r\n       * @param int k int整型 the k\r\n       * @return *[] int整型一维数组\r\n       */\r\n      function LRU( operators = [] ,  k = 0 ) {\r\n        // write code here\r\n        let map = new Map();\r\n        let result = [];\r\n        operators.forEach((item) => {\r\n          const [op, key, value] = item;\r\n          if (op === 1) { // set\r\n            if (map.size >= k) {\r\n              map.delete(map.keys().next().value);\r\n            }\r\n            map.set(key, value);\r\n          } else { // get\r\n            const val = map.get(key);\r\n            if (val === undefined) {\r\n              result.push(-1);\r\n            } else {\r\n              result.push(val);\r\n              map.delete(key);\r\n              map.set(key, val);\r\n            }\r\n          }\r\n        })\r\n        return result;\r\n      }\r\n\r\n    </script>\r\n</head>\r\n<body>\r\n<div style=\"flex:1;\">\r\n  <li>\r\n    <a href=\"https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=117&&tqId=37777&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking\"\r\n       target=\"_blank\">NC78 反转链表 reverseList</a></li>\r\n  <div>\r\n    描述 <br>\r\n    设计LRU缓存结构，该结构在构造时确定大小，假设大小为K，并有如下两个功能 set(key, value)：将记录(key, value)插入该结构 get(key)：返回key对应的value值\r\n    [要求] <br>\r\n     set和get方法的时间复杂度为O(1) <br>\r\n     某个key的set或get操作一旦发生，认为这个key的记录成了最常使用的。 <br>\r\n     当缓存的大小超过K时，移除最不经常使用的记录，即set或get最久远的。 <br>\r\n     若opt=1，接下来两个整数x, y，表示set(x, y) <br>\r\n     若opt=2，接下来一个整数x，表示get(x)，若x未出现过或已被移除，则返回-1 <br>\r\n     对于每个操作2，输出一个答案 <br>\r\n     示例1 <br>\r\n     输入： <br>\r\n     [[1,1,1],[1,2,2],[1,3,2],[2,1],[1,4,4],[2,2]],3 <br>\r\n    <br>\r\n     返回值： <br>\r\n     [1,-1] <br>\r\n    <br>\r\n     说明： <br>\r\n     第一次操作后：最常使用的记录为(\"1\", 1) <br>\r\n     第二次操作后：最常使用的记录为(\"2\", 2)，(\"1\", 1)变为最不常用的 <br>\r\n     第四次操作后：最常用的记录为(\"1\", 1)，(\"2\", 2)变为最不常用的 <br>\r\n     第五次操作后：大小超过了3，所以移除此时最不常使用的记录(\"2\", 2)，加入记录(\"4\", 4)，并且为最常使用的记录，然后(\"3\", 2)变为最不常使用的记录 <br>\r\n\r\n     备注： <br><br>\r\n     1≤K≤N≤10^5 <br>\r\n     −2×10^9≤x,y≤2×10^9 <br>\r\n  </div>\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LRU.html b/LRU.html
+--- a/LRU.html	(revision 05073f1165d9f48ab155af99b10352b219232e6a)
++++ b/LRU.html	(date 1626333472833)
+@@ -74,9 +74,9 @@
+ </head>
+ <body>
+ <div style="flex:1;">
+-  <li>
+-    <a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=117&&tqId=37777&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
+-       target="_blank">NC78 反转链表 reverseList</a></li>
++    <li>
++        <a href="https://www.nowcoder.com/practice/e3769a5f49894d49b871c09cadd13a61?tpId=117&&tqId=37804&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
++           target="_blank">NC93 设计LRU缓存结构 LRU</a></li>
+   <div>
+     描述 <br>
+     设计LRU缓存结构，该结构在构造时确定大小，假设大小为K，并有如下两个功能 set(key, value)：将记录(key, value)插入该结构 get(key)：返回key对应的value值
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>LetCode题库算法练习</title>\r\n    <script type=\"text/javascript\">\r\n        window.onload = function () {\r\n            console.log(generate(7, 5)); // 15\r\n        };\r\n\r\n        function generate(row, column) {\r\n            if (column == 1 || row == column) {\r\n                return 1;\r\n            } else {\r\n                return generate(row - 1, column - 1) + generate(row - 1, column);\r\n            }\r\n        }\r\n\r\n        // 大数相加\r\n        function bigNumAdd(big1, big2) {\r\n            big1 += \"\";\r\n            big2 += \"\";\r\n            var maxLen = Math.max(big1.length, big2.length),\r\n                bAry = big1.split(\"\").reverse(),\r\n                cAry = big2.split(\"\").reverse(),\r\n                overflow = 0,\r\n                resAry = [],\r\n                fn,\r\n                sn,\r\n                sum;\r\n            for (var i = 0; i <= maxLen; i++) {\r\n                fn = parseInt(bAry[i] || 0);\r\n                sn = parseInt(cAry[i] || 0);\r\n                sum = fn + sn + overflow;\r\n                overflow = (sum - sum % 10) / 10;\r\n                resAry.unshift(sum % 10);\r\n            }\r\n            if (resAry[0] == 0) {\r\n                resAry.splice(0, 1);\r\n            }\r\n            return resAry.join(\"\");\r\n        }\r\n    </script>\r\n</head>\r\n<body>\r\n<div style=\"flex:1; display: flex; flex-direction: row;\">\r\n    <div style=\"background-color: aliceblue; width: 20%; height: 100%;\">\r\n        <ul>\r\n            <li><a href=\"https://leetcode-cn.com/problems/two-sum/\" target=\"_blank\">1 两数之和</a></li>\r\n            <li><a href=\"https://leetcode-cn.com/problems/add-two-numbers/\" target=\"_blank\">2 两数相加</a></li>\r\n            <li><a href=\"https://leetcode-cn.com/problems/reverse-integer/\" target=\"_blank\">7 整数反转</a></li>\r\n            <li><a href=\"https://leetcode-cn.com/problems/palindrome-number/\" target=\"_blank\">9 回文数</a></li>\r\n            <li><a href=\"https://leetcode-cn.com/problems/roman-to-integer/\" target=\"_blank\">13 罗马数字转整数</a></li>\r\n            <li><a href=\"https://leetcode-cn.com/problems/valid-parentheses/\" target=\"_blank\">20 有效的括号</a></li>\r\n            <div>华为笔试题合集:</div>\r\n            <li>\r\n                <a href=\"https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=117&&tqId=37777&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking\"\r\n                   target=\"_blank\">NC78 反转链表 reverseList</a></li>\r\n            <li>\r\n                <a href=\"https://www.nowcoder.com/practice/e3769a5f49894d49b871c09cadd13a61?tpId=117&&tqId=37804&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking\"\r\n                   target=\"_blank\">NC93 设计LRU缓存结构 LRU</a></li>\r\n        </ul>\r\n    </div>\r\n    <div>\r\n\r\n    </div>\r\n</div>\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.html b/index.html
+--- a/index.html	(revision 05073f1165d9f48ab155af99b10352b219232e6a)
++++ b/index.html	(date 1626403119116)
+@@ -5,46 +5,208 @@
+     <title>LetCode题库算法练习</title>
+     <script type="text/javascript">
+         window.onload = function () {
+-            console.log(generate(7, 5)); // 15
+         };
+ 
+-        function generate(row, column) {
+-            if (column == 1 || row == column) {
+-                return 1;
+-            } else {
+-                return generate(row - 1, column - 1) + generate(row - 1, column);
+-            }
+-        }
++        /**********************************************NC78 反转链表 reverseList*****************************************/
++        const list = parseToList([1, 2, 3]);
++        console.log('reverseList', reverseList(list));
++
++        /**
++         * 反转链表
++         * @param head
++         */
++        function reverseList(head) {
++            let next = null;
++            let pre = null;
++
++            while (head != null) {
++                next = head.next;
++                head.next = pre;
++                pre = head;
++                head = next;
++            }
++            return pre;
++        }
++
++        function ListNode(val) {
++            this.val = val;
++            this.next = null;
++        }
++
++        /**
++         * 数组转换成链表
++         * @param {Array} arr
++         * @return {ListNode}
++         */
++        function parseToList(arr) {
++            let list = new ListNode(null);
++            let head = list;
++            if (!arr.length) {
++                return head
++            }
++            for (let i = 0; i < arr.length; i++) {
++                list.val = arr[i];
++                if (arr.length - 1 === i) {
++                    list.next = null;
++                } else {
++                    list.next = new ListNode(arr[i + 1]);
++                    list = list.next;
++                }
++            }
++            return head;
++        }
++
++        /**********************************************NC93 设计LRU缓存结构 LRU*******************************************/
++        /**
++         * lru design
++         * @param *[] operators int整型二维数组 the ops
++         * @param int k int整型 the k
++         * @return *[] int整型一维数组
++         */
++        let arr = [[1, 1, 1], [1, 2, 2], [1, 3, 2], [2, 1], [1, 4, 4], [2, 2]];
++        let k = 3;
++        console.log('LRU', LRU(arr, k));
++
++        function LRU(operators = [], k = 0) {
++            // write code here
++            let map = new Map();
++            let result = [];
++            operators.forEach((item) => {
++                const [op, key, value] = item;
++                if (op === 1) { // set
++                    if (map.size >= k) {
++                        map.delete(map.keys().next().value);
++                    }
++                    map.set(key, value);
++                } else { // get
++                    const val = map.get(key);
++                    if (val === undefined) {
++                        result.push(-1);
++                    } else {
++                        result.push(val);
++                        map.delete(key);
++                        map.set(key, val);
++                    }
++                }
++            })
++            return result;
++        }
++
++        /**********************************************二进制中1的个数****************************************************/
++        console.log('numberOf1', numberOf1(13));
++
++        function numberOf1(n) {
++            // 没有考虑负数
++            // write code here
++            let count = 0;
++            while (n) {
++                count++;
++                n = n & (n - 1);
++            }
++            return count;
++        }
++
++        /*function numberOf1(n) {
++            // 没有考虑负数
++            // write code here
++            let count = 0;
++            while (n !== 0){
++                let temp = n % 2;
++                if (temp === 1) {
++                    count++;
++                }
++                n = n / 2 | 0
++            }
++            return count;
++        }*/
++        /**********************************************NC61 两数之和*****************************************************/
++        /**
++         * 给出一个整数数组，请在数组中找出两个加起来等于目标值的数，
++         * @param numbers int整型一维数组
++         * @param target int整型
++         * @return number[] int整型一维数组
++         */
++        console.log('twoSum', twoSum([3, 2, 4], 6))
++
++        function twoSum(numbers, target) {
++            // write code here
++            let map = new Map();
++            for (let i = 0; i < numbers.length; i++) {
++                let res = target - numbers[i];
++                if (map.has(res)) {
++                    return [map.get(res), i + 1]
++                }
++                map.set(numbers[i], i + 1);
++            }
++        }
++
++        /*function twoSum( numbers ,  target ) {
++            // write code here
++            for(let i = 0; i < numbers.length - 1; i++){
++                for (let j = i+1; j < numbers.length; j++){
++                    if (numbers[i] + numbers[j] === target) {
++                        return [i+1, j+1];
++                    }
++                }
++            }
++        }*/
+ 
+-        // 大数相加
+-        function bigNumAdd(big1, big2) {
+-            big1 += "";
+-            big2 += "";
+-            var maxLen = Math.max(big1.length, big2.length),
+-                bAry = big1.split("").reverse(),
+-                cAry = big2.split("").reverse(),
+-                overflow = 0,
+-                resAry = [],
+-                fn,
+-                sn,
+-                sum;
+-            for (var i = 0; i <= maxLen; i++) {
+-                fn = parseInt(bAry[i] || 0);
+-                sn = parseInt(cAry[i] || 0);
+-                sum = fn + sn + overflow;
+-                overflow = (sum - sum % 10) / 10;
+-                resAry.unshift(sum % 10);
++        /**********************************************NC45 实现二叉树先序，中序和后序遍历***********************************/
++
++        let node = new TreeNode(1);
++        node.left = new TreeNode(2);
++        node.right = new TreeNode(3);
++        console.log('threeOrders', threeOrders(node));
++        /**
++         * 二叉树先序，中序和后序遍历
++         * @param TreeNode root TreeNode类 the root of binary tree {1,2,3}
++         * @return Array int整型二维数组 [[1,2,3],[2,1,3],[2,3,1]]
++         * 先序：根左右
++         * 中序：左根右
++         * 后序：左右根
++         *
++         */
++        function threeOrders(root) {
++            // write code here
++            let preArray = [], middleArray = [], postArray = [];
++            function preOrder(root) {
++                if (root) {
++                    preArray.push(root.val);
++                    preOrder(root.left);
++                    preOrder(root.right);
++                }
++            }
++            function middleOrder(root) {
++                if (root) {
++                    middleOrder(root.left);
++                    middleArray.push(root.val);
++                    middleOrder(root.right);
++                }
++            }
++            function postOrder(root) {
++                if (root) {
++                    postOrder(root.left);
++                    postOrder(root.right);
++                    postArray.push(root.val);
++                }
+             }
+-            if (resAry[0] == 0) {
+-                resAry.splice(0, 1);
+-            }
+-            return resAry.join("");
++            preOrder(root);
++            middleOrder(root);
++            postOrder(root);
++            return [preArray, middleArray, postArray];
++        }
++
++        function TreeNode(x) {
++          this.val = x;
++          this.left = null;
++          this.right = null;
+         }
++
+     </script>
+ </head>
+ <body>
+ <div style="flex:1; display: flex; flex-direction: row;">
+-    <div style="background-color: aliceblue; width: 20%; height: 100%;">
++    <div>
+         <ul>
+             <li><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank">1 两数之和</a></li>
+             <li><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank">2 两数相加</a></li>
+@@ -59,6 +221,15 @@
+             <li>
+                 <a href="https://www.nowcoder.com/practice/e3769a5f49894d49b871c09cadd13a61?tpId=117&&tqId=37804&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
+                    target="_blank">NC93 设计LRU缓存结构 LRU</a></li>
++            <li>
++                <a href="https://www.nowcoder.com/practice/8ee967e43c2c4ec193b040ea7fbb10b8?tpId=117&&tqId=37771&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
++                   target="_blank">NC120 二进制中1的个数</a></li>
++            <li>
++                <a href="https://www.nowcoder.com/practice/20ef0972485e41019e39543e8e895b7f?tpId=117&&tqId=37756&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
++                   target="_blank">NC61 两数之和</a></li>
++            <li>
++                <a href="https://www.nowcoder.com/practice/a9fec6c46a684ad5a3abd4e365a9d362?tpId=117&&tqId=37819&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
++                   target="_blank">NC45 实现二叉树先序，中序和后序遍历</a></li>
+         </ul>
+     </div>
+     <div>
+Index: NumberOf1.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NumberOf1.html b/NumberOf1.html
+new file mode 100644
+--- /dev/null	(date 1626336403570)
++++ b/NumberOf1.html	(date 1626336403570)
+@@ -0,0 +1,66 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>NC120 二进制中1的个数</title>
++    <script type="text/javascript">
++        window.onload = function () {
++            /**
++             描述
++             输入一个整数，输出该数32位二进制表示中1的个数。其中负数用补码表示。
++
++             示例1
++             输入：
++             10
++             返回值：
++             2
++             */
++            let NumberOf1 = 10;
++            console.log('NumberOf1', numberOf1(NumberOf1));
++        }
++
++        function numberOf1(n) {
++            // 没有考虑负数
++            // write code here
++            let count = 0;
++            while (n){
++                count++;
++                n = n & (n-1);
++            }
++            return count;
++        }
++
++        /*function numberOf1(n) {
++            // 没有考虑负数
++            // write code here
++            let count = 0;
++            while (n !== 0){
++                let temp = n % 2;
++                if (temp === 1) {
++                    count++;
++                }
++                n = n / 2 | 0
++            }
++            return count;
++        }*/
++
++    </script>
++</head>
++<body>
++<div style="flex:1;">
++    <li>
++        <a href="https://www.nowcoder.com/practice/8ee967e43c2c4ec193b040ea7fbb10b8?tpId=117&&tqId=37771&&companyId=239&rp=1&ru=/company/home/code/239&qru=/ta/job-code-high/question-ranking"
++           target="_blank">NC120 二进制中1的个数</a></li>
++    <div>
++        描述 <br>
++        输入一个整数，输出该数32位二进制表示中1的个数。其中负数用补码表示。 <br>
++        <br>
++        示例1 <br>
++        输入： <br>
++        10 <br>
++        返回值： <br>
++        2 <br>
++    </div>
++</div>
++</body>
++</html>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9c37b962-699b-4c63-b230-4bad88934105\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1ogpWMgkh8TglICVyr8PTFPFYNC\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/js\" />\r\n    <property name=\"nodejs_interpreter_path.stuck_in_default_project\" value=\"undefined stuck path\" />\r\n    <property name=\"nodejs_npm_path_reset_for_default_project\" value=\"true\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\MyProject\\1\\Demo5\\js\" />\r\n      <recent name=\"D:\\MyProject\\1\\Demo5\" />\r\n      <recent name=\"D:\\MyProject\\1\\Demo5\\echarts\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\MyProject\\1\\Demo5\\echarts\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JavaScript Debug.reverseInteger.html\">\r\n    <configuration name=\"index.html\" type=\"JavascriptDebugType\" temporary=\"true\" nameIsGenerated=\"true\" uri=\"http://localhost:63342/Demo5/index.html\" useBuiltInWebServerPort=\"true\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"reverseInteger.html\" type=\"JavascriptDebugType\" nameIsGenerated=\"true\" uri=\"http://localhost:63342/Demo5/reverseInteger.html\" useBuiltInWebServerPort=\"true\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JavaScript Debug.index.html\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9c37b962-699b-4c63-b230-4bad88934105\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1609826946781</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1609826946781</updated>\r\n      <workItem from=\"1609826949726\" duration=\"8765000\" />\r\n      <workItem from=\"1609898613213\" duration=\"4737000\" />\r\n      <workItem from=\"1609927592072\" duration=\"123000\" />\r\n      <workItem from=\"1610090302552\" duration=\"64000\" />\r\n      <workItem from=\"1613718120841\" duration=\"8653000\" />\r\n      <workItem from=\"1613784987117\" duration=\"1200000\" />\r\n      <workItem from=\"1613957500459\" duration=\"4741000\" />\r\n      <workItem from=\"1614044671737\" duration=\"151000\" />\r\n      <workItem from=\"1614233683241\" duration=\"2574000\" />\r\n      <workItem from=\"1614913167359\" duration=\"1078000\" />\r\n      <workItem from=\"1614925335352\" duration=\"67000\" />\r\n      <workItem from=\"1614925425620\" duration=\"5000\" />\r\n      <workItem from=\"1614925473201\" duration=\"26000\" />\r\n      <workItem from=\"1614925650090\" duration=\"4245000\" />\r\n      <workItem from=\"1614932152818\" duration=\"90000\" />\r\n      <workItem from=\"1614936895572\" duration=\"2109000\" />\r\n      <workItem from=\"1615168094287\" duration=\"56000\" />\r\n      <workItem from=\"1615553389112\" duration=\"644000\" />\r\n      <workItem from=\"1615773054405\" duration=\"86000\" />\r\n      <workItem from=\"1616058426452\" duration=\"365000\" />\r\n      <workItem from=\"1617085576547\" duration=\"447000\" />\r\n      <workItem from=\"1624240853521\" duration=\"10614000\" />\r\n      <workItem from=\"1626247426198\" duration=\"4538000\" />\r\n      <workItem from=\"1626253751150\" duration=\"902000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 05073f1165d9f48ab155af99b10352b219232e6a)
++++ b/.idea/workspace.xml	(date 1626417335440)
+@@ -2,7 +2,10 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="9c37b962-699b-4c63-b230-4bad88934105" name="Default Changelist" comment="">
++      <change afterPath="$PROJECT_DIR$/NumberOf1.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/LRU.html" beforeDir="false" afterPath="$PROJECT_DIR$/LRU.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -19,6 +22,14 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
+   </component>
+   <component name="ProjectId" id="1ogpWMgkh8TglICVyr8PTFPFYNC" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+@@ -33,7 +44,7 @@
+     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+     <property name="nodejs_package_manager_path" value="npm" />
+@@ -41,8 +52,8 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="D:\MyProject\1\Demo5" />
+       <recent name="D:\MyProject\1\Demo5\js" />
+-      <recent name="D:\MyProject\1\Demo5" />
+       <recent name="D:\MyProject\1\Demo5\echarts" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+@@ -97,6 +108,11 @@
+       <workItem from="1624240853521" duration="10614000" />
+       <workItem from="1626247426198" duration="4538000" />
+       <workItem from="1626253751150" duration="902000" />
++      <workItem from="1626257224284" duration="1216000" />
++      <workItem from="1626317414710" duration="7277000" />
++      <workItem from="1626332525288" duration="7997000" />
++      <workItem from="1626400463079" duration="4371000" />
++      <workItem from="1626414436870" duration="1716000" />
+     </task>
+     <servers />
+   </component>
