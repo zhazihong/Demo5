@@ -233,6 +233,36 @@
             return h.next;
         }
 
+        /**********************************************NC103 反转字符串***********************************/
+        console.log('反转字符串:solve', solve('abcd'));
+        /**
+         * 反转字符串
+         * @param str string字符串
+         * @return string字符串
+         */
+        function solve( str ) {
+            // write code here
+            if (str) {
+                return str.split('').reverse().join('');
+            }
+            return str;
+        }
+
+        /**********************************************NC101 缺失数字***********************************/
+        console.log('缺失数字:solve', solveNums([0, 1, 2, 4]))
+        /**
+         * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+         *
+         * 找缺失数字
+         * @param Array a int整型一维数组 给定的数字串
+         * @return number int整型
+         */
+        function solveNums( a ) {
+            // write code here
+            let i = a.findIndex((item, index) => item !== index);
+            return i === -1 ? a.length : i;
+        }
+
     </script>
 </head>
 <body>
