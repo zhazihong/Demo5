@@ -352,6 +352,102 @@
             return max;
         }
 
+        /*******************************NC52 括号序列 栈***********************************/
+        console.log('NC52 括号序列isValid:', isValid('{}[')); // false
+        /**
+         *
+         * @param string s 字符串
+         * @return boolean bool布尔型
+         */
+        function isValid( s ) {
+            // write code here
+            let stack = [];
+            for(let i = 0; i < s.length; i++){
+                const val = s[i];
+                if(['(', '[', '{'].includes(val)) {
+                    stack.push(val);
+                } else if (val === ')') {
+                    if (stack.pop() !== '(')
+                        return false;
+                } else if (val === '}') {
+                    if (stack.pop() !== '{')
+                        return false;
+                } else if (val === ']') {
+                    if (stack.pop() !== '[')
+                        return false;
+                }
+            }
+            return !stack.length;
+        }
+
+        /*******************************NC14 按之字形顺序打印二叉树***********************************/
+        const tree = new TreeNode(1);
+        tree.left = new TreeNode(2);
+        tree.right = new TreeNode(3);
+        tree.right.left = new TreeNode(4);
+        tree.right.right = new TreeNode(5);
+        console.log('NC14 按之字形顺序打印二叉树Print:',Print(tree)); // {1,2,3,#,#,4,5} > [[1],[3,2],[4,5]]
+        /**
+         * 按之字形顺序打印二叉树
+         * @param pRoot
+         * @return {*[]}
+         * @constructor
+         */
+        function Print(pRoot) {
+            // write code here
+            let res = [];
+            if (!pRoot) return res;
+            let nodes = []; // 每层需要遍历的node
+            let floors = 1; // 层级
+            nodes.push(pRoot);
+            while(nodes.length) {
+                let temp = [];
+                let n = nodes.length;
+                while(n) {
+                    let node = nodes.shift();
+                    temp.push(node.val);
+                    if (node.left) nodes.push(node.left);
+                    if (node.right) nodes.push(node.right);
+                    n--;
+                }
+                if (floors % 2 === 1) {
+                    res.push(temp);
+                } else {
+                    res.push(temp.reverse());
+                }
+                floors++;
+            }
+            return res;
+        }
+
+        /*******************************NC127 最长公共子串***********************************/
+        console.log('NC127 最长公共子串LCS:', LCS("1AB2345CD","12345EF"));
+        /**
+         *
+         * @param {string} str1
+         * @param {string} str2
+         * @return {string}
+         * @constructor
+         */
+        function LCS( str1 ,  str2 ) {
+            // write code here
+            if(str1.length > str2.length){
+                [str1, str2] = [str2, str1]
+            }
+            let temp = '';
+            let res = '';
+            for(let i = 0; i < str1.length; i++) {
+                temp = temp.concat(str1[i]);
+                console.log('temp', temp);
+                if (!str2.includes(temp)) {
+                    temp = temp.substring(1);
+                } else {
+                    res = res.length < temp.length ? temp : res;
+                }
+            }
+            return res;
+        }
+
     </script>
 </head>
 <body>
