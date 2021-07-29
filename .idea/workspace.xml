@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c37b962-699b-4c63-b230-4bad88934105" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_7_15_15_06_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_7_15_15_06__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_7_16_15_07_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_7_16_15_07__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -98,6 +102,12 @@
       <workItem from="1624240853521" duration="10614000" />
       <workItem from="1626247426198" duration="4538000" />
       <workItem from="1626253751150" duration="902000" />
+      <workItem from="1626659175114" duration="12142000" />
+      <workItem from="1626747806865" duration="4115000" />
+      <workItem from="1626837439391" duration="14073000" />
+      <workItem from="1627004949397" duration="123000" />
+      <workItem from="1627011084064" duration="12199000" />
+      <workItem from="1627436941790" duration="293000" />
     </task>
     <servers />
   </component>
